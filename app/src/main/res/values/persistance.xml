@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="borrowers">
+        <item>
+            <id>0</id>
+            <firstName>Paweł</firstName>
+            <lastName>Janas</lastName>
+        </item>
+        <item>
+            <id>1</id>
+            <firstName>Tomasz</firstName>
+            <lastName>Kloc</lastName>
+        </item>
+        <item>
+            <id>2</id>
+            <firstName>Andrzej</firstName>
+            <lastName>Golara</lastName>
+        </item>
+        <item>
+            <id>3</id>
+            <firstName>Roman</firstName>
+            <lastName>Kurski</lastName>
+        </item>
+    </array>
+</resources>
