@@ -11,6 +11,9 @@ interface BorrowerDao {
     @Query("SELECT * FROM Borrower WHERE id between :from and :to")
     fun getAll(from: Int, to: Int): Cursor
 
+    @Query("SELECT * FROM Borrower WHERE id = :id")
+    fun getById(id: Int): Borrower
+
     @Insert
     fun insert(borrower: Borrower)
 
