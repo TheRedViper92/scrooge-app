@@ -1,6 +1,5 @@
 package com.spartancode.prm_projekt_01
 
-import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,26 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.spartancode.prm_projekt_01.db.Borrower
 
 class BorrowerAdapter(
-    private val borrowers: List<Borrower>,
-    onBorrowerListener: OnBorrowerListener
+    private var borrowers: ArrayList<Borrower>,
+    onBorrowerClickListener: OnBorrowerClickListener
 ) :
     RecyclerView.Adapter<BorrowerAdapter.MyViewHolder>() {
 
-    private val onBorrowerListener: OnBorrowerListener = onBorrowerListener
+    private val onBorrowerClickListener: OnBorrowerClickListener = onBorrowerClickListener
 
-    inner class MyViewHolder(listItemView: View, onBorrowerListener: OnBorrowerListener) :
+    inner class MyViewHolder(listItemView: View, onBorrowerClickListener: OnBorrowerClickListener) :
         RecyclerView.ViewHolder(listItemView), View.OnClickListener {
         val borrowerNameTextView: TextView = listItemView.findViewById(R.id.borrower_name)
         val debtTextView: TextView = listItemView.findViewById(R.id.debt)
         val idTextView: TextView = listItemView.findViewById(R.id.borrower_id)
-        var onBorrowerListener: OnBorrowerListener = onBorrowerListener
+        var onBorrowerClickListener: OnBorrowerClickListener = onBorrowerClickListener
 
         init {
             listItemView.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
-            onBorrowerListener.onBorrowerClick(adapterPosition)
+            onBorrowerClickListener.onBorrowerClick(adapterPosition)
         }
     }
 
@@ -36,7 +35,7 @@ class BorrowerAdapter(
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val borrowerView = inflater.inflate(R.layout.borrower_list_item, parent, false)
-        return MyViewHolder(borrowerView, onBorrowerListener)
+        return MyViewHolder(borrowerView, onBorrowerClickListener)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -52,7 +51,13 @@ class BorrowerAdapter(
 
     override fun getItemCount() = borrowers.size
 
-    public interface OnBorrowerListener {
+    fun updateBorrowersList(newBorrowers: List<Borrower>){
+        borrowers.clear()
+        borrowers.addAll(newBorrowers)
+        this.notifyDataSetChanged()
+    }
+
+    interface OnBorrowerClickListener {
         fun onBorrowerClick(position: Int)
     }
 }

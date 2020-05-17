@@ -12,6 +12,9 @@ class Database private constructor(val context: Context) {
     }
 
     val database by lazy {
-        Room.databaseBuilder(context, BorrowerDb::class.java, "borrowers.db").build()
+        Room.databaseBuilder(context, BorrowerDb::class.java, "borrowers.db")
+            .allowMainThreadQueries()
+            .build()
+//        Room.databaseBuilder(context, BorrowerDb::class.java, "borrowers.db").build()
     }
 }

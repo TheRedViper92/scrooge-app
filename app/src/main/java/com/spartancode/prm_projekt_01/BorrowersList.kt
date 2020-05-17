@@ -3,21 +3,20 @@ package com.spartancode.prm_projekt_01
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.spartancode.prm_projekt_01.db.Borrower
 import com.spartancode.prm_projekt_01.db.Database
-import kotlinx.android.synthetic.main.borrower_list_activity.*
 import kotlin.concurrent.thread
 
-class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerListener {
+class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListener {
     val db by lazy { Database.getInstance(applicationContext).database }
-    val borrowers by lazy {
+    private val borrowers by lazy {
         db.borrowers().getAll()
     }
+
+    private val adapter by lazy { BorrowerAdapter(borrowers as ArrayList<Borrower>, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +26,8 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerListener {
 
     override fun onResume() {
         super.onResume()
+        val borrowers = db.borrowers().getAll()
+        adapter.updateBorrowersList(borrowers)
     }
 
     fun openNewBorrowerActivity(view: View) {
@@ -35,14 +36,9 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerListener {
     }
 
     private fun fetchData() {
-        thread {
-            val rvBorrower = findViewById<View>(R.id.borrowers_list) as RecyclerView
-            val adapter = BorrowerAdapter(borrowers, this)
-            runOnUiThread {
-                rvBorrower.adapter = adapter
-                rvBorrower.layoutManager = LinearLayoutManager(this)
-            }
-        }
+        val rvBorrower = findViewById<View>(R.id.borrowers_list) as RecyclerView
+        rvBorrower.adapter = adapter
+        rvBorrower.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onBorrowerClick(position: Int) {
