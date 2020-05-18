@@ -44,8 +44,8 @@ class BorrowerAdapter(
         val debtTextView = holder.debtTextView;
         val idTextView = holder.idTextView
 
-        firstNameTextView.text = borrower.firstName
-        debtTextView.text = borrower.debt.toString()
+        firstNameTextView.text = "${borrower.firstName} ${borrower.lastName}"
+        debtTextView.text = "${borrower.debt} zł"
         idTextView.text = borrower.id.toString()
     }
 
