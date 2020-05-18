@@ -3,4 +3,7 @@
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="add">Save</string>
+    <string name="name">Name</string>
+    <string name="debt">0.0 zł</string>
+    <string name="textview">TextView</string>
 </resources>
