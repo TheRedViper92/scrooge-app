@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddBorrower"></activity>
+        <activity android:name=".EditBorrower"></activity>
         <activity android:name=".BorrowerListItem" />
         <activity android:name=".BorrowersList">
             <intent-filter>

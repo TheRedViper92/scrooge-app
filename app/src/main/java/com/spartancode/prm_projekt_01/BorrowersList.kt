@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.spartancode.prm_projekt_01.db.Borrower
 import com.spartancode.prm_projekt_01.db.Database
-import kotlin.concurrent.thread
 
 class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListener {
     val db by lazy { Database.getInstance(applicationContext).database }
@@ -31,7 +30,7 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListen
     }
 
     fun openNewBorrowerActivity(view: View) {
-        val addBorrowerIntent = Intent(this, AddBorrower::class.java)
+        val addBorrowerIntent = Intent(this, EditBorrower::class.java)
         startActivity(addBorrowerIntent)
     }
 
@@ -42,7 +41,7 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListen
     }
 
     override fun onBorrowerClick(position: Int) {
-        val editBorrowerIntent = Intent(this, AddBorrower::class.java)
+        val editBorrowerIntent = Intent(this, EditBorrower::class.java)
         editBorrowerIntent.putExtra("BORROWER_ID", borrowers[position].id)
         startActivity(editBorrowerIntent)
     }

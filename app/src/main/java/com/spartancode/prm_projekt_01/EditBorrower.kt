@@ -8,7 +8,7 @@ import com.spartancode.prm_projekt_01.db.Database
 import kotlinx.android.synthetic.main.add_borrower_activity.*
 import kotlin.concurrent.thread
 
-class AddBorrower : AppCompatActivity() {
+class EditBorrower : AppCompatActivity() {
     private lateinit var borrower: Borrower
     val db by lazy {
         Database.getInstance(applicationContext).database
@@ -44,15 +44,14 @@ class AddBorrower : AppCompatActivity() {
         this.finish()
     }
 
+    fun cancelBorrower(view: View) {
+        this.finish()
+    }
+
     private fun setBorrowerData(borrower: Borrower) {
         firstNameValue.setText(borrower.firstName)
         lastNameValue.setText(borrower.lastName)
         debtValue.setText(borrower.debt.toString())
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        db.close()
-//    }
 }
 

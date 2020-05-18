@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBorrower">
+    android:background="#1C1B1B"
+    tools:context=".EditBorrower">
 
     <TextView
         android:id="@+id/firstNameLabel"
@@ -18,6 +19,7 @@
         android:fontFamily="sans-serif"
         android:inputType="none"
         android:text="@string/first_name"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
@@ -44,6 +49,7 @@
         android:ems="10"
         android:inputType="none"
         android:text="@string/last_name"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstNameValue" />
@@ -53,6 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="15sp"
@@ -70,6 +78,7 @@
         android:ems="10"
         android:inputType="none"
         android:text="Debt"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameValue" />
@@ -79,20 +88,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:singleLine="false"
+        android:textColorHint="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/debtLabel" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:onClick="addBorrower"
-        android:text="@string/add"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <ImageButton
+        android:id="@+id/cancel_button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitCenter"
+        android:background="#007C4949"
+        android:src="@drawable/ic_baseline_cancel_red_24"
+        android:onClick="cancelBorrower"
+        app:layout_constraintEnd_toStartOf="@+id/save_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/debtValue" />
+
+    <ImageButton
+        android:id="@+id/save_button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitCenter"
+        android:background="#007C4949"
+        android:src="@drawable/ic_baseline_check_circle_24"
+        android:onClick="addBorrower"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/debtValue" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
