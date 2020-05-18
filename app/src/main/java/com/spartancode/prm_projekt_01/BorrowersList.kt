@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.spartancode.prm_projekt_01.db.Borrower
 import com.spartancode.prm_projekt_01.db.Database
+import kotlinx.android.synthetic.main.borrower_list_activity.*
 
 class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListener {
     val db by lazy { Database.getInstance(applicationContext).database }
@@ -20,13 +21,15 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.borrower_list_activity)
-        fetchData()
+        initializeData()
+        setTotalDebts()
     }
 
     override fun onResume() {
         super.onResume()
         val borrowers = db.borrowers().getAll()
         adapter.updateBorrowersList(borrowers)
+        setTotalDebts()
     }
 
     fun openNewBorrowerActivity(view: View) {
@@ -34,10 +37,14 @@ class BorrowersList : AppCompatActivity(), BorrowerAdapter.OnBorrowerClickListen
         startActivity(addBorrowerIntent)
     }
 
-    private fun fetchData() {
+    private fun initializeData() {
         val rvBorrower = findViewById<View>(R.id.borrowers_list) as RecyclerView
         rvBorrower.adapter = adapter
         rvBorrower.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun setTotalDebts() {
+        totalDebtValue.text = "${db.borrowers().getDebtsSum()} zł"
     }
 
     override fun onBorrowerClick(position: Int) {

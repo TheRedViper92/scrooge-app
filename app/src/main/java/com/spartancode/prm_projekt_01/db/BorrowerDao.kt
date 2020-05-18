@@ -14,6 +14,9 @@ interface BorrowerDao {
     @Query("SELECT * FROM Borrower WHERE id = :id")
     fun getById(id: Int): Borrower
 
+    @Query("SELECT SUM(debt) AS DEBTS_SUM FROM Borrower")
+    fun getDebtsSum(): Double
+
     @Insert
     fun insert(borrower: Borrower)
 
