@@ -4,6 +4,8 @@
     android:id="@+id/borrower_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="1px"
+    android:background="#1C1B1B"
     android:orientation="horizontal"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
@@ -14,7 +16,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Name"
+        android:text="@string/name"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Debt"
+        android:text="@string/debt"
+        android:textColor="#FFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/borrower_name" />
 
@@ -34,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/textview"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/debt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

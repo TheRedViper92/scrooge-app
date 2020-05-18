@@ -10,11 +10,12 @@
         android:id="@+id/borrowers_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="100dp"
+        android:background="#2E2D2D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/borrower_list_item" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -24,8 +25,9 @@
         android:layout_marginBottom="20dp"
         android:background="#007C4949"
         android:onClick="openNewBorrowerActivity"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_circle_black_75dp" />
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
